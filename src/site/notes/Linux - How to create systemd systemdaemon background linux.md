@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/linux-how-to-create-systemd-systemdaemon-background-linux/","tags":["gardenEntry"]}
+{"dg-publish":true,"permalink":"/linux-how-to-create-systemd-systemdaemon-background-linux/"}
 ---
 
 

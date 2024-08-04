@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/vm-linux-cannot-enable-vtx-virtualization/","tags":["gardenEntry"]}
+{"dg-publish":true,"permalink":"/vm-linux-cannot-enable-vtx-virtualization/"}
 ---
 
 
