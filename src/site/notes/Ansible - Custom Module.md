@@ -21,66 +21,6 @@ __metaclass__ = type
 
 from ansible.module_utils.basic import AnsibleModule
 
-DOCUMENTATION = r'''
-This is module for HUAWEI vrp with command display ip routing-table
-and only for public route-table
-please locate this on
-/usr/share/ansible/plugins/modules
-'''
-
-EXAMPLES = r'''
-- name: TEST yourorganization MODULE
-  hosts: metrodevice
-  connection: local
-  gather_facts: no
-
-  tasks:
-    - name: RUN CALL HUAWEI MODULE
-      yourorganization_module_huawei_display_ip_routing_table:
-        command: 'display ip routing-table'
-        ansible_host: '{{ hostvars[inventory_hostname].ansible_host }}'
-        ansible_network_os: '{{ hostvars[inventory_hostname].ansible_network_os }}'
-        ansible_user: '{{ hostvars[inventory_hostname].ansible_user }}'
-        ansible_ssh_pass: '{{ hostvars[inventory_hostname].ansible_ssh_pass }}'
-        ansible_platform: '{{ hostvars[inventory_hostname].ansible_platform }}'
-      register: output
-
-    - name: PRINT OUTPUT SUCCESS MODULE
-      debug:
-        msg: '{{ output }}'
-'''
-
-RETURN = r'''
-"msg": {
-        "ansible_facts": {
-            "discovered_interpreter_python": "/usr/libexec/platform-python"
-        },
-        "changed": false,
-        "failed": false,
-        "return_from_devices": [
-            {
-                "cost": "65000",
-                "destination": "1.1.1.1/32",
-                "flag": "D",
-                "interface": "Eth-Trunk4",
-                "nexthop": "172.31.104.69",
-                "pre": "10",
-                "proto": "OSPF",
-                "routetables": "Public"
-            },
-            {
-                "cost": "0",
-                "destination": "1.1.1.5/32",
-                "flag": "D",
-                "interface": "LoopBack0",
-                "nexthop": "127.0.0.1",
-                "pre": "0",
-                "proto": "Direct",
-                "routetables": "Public"
-            },
-    ----- OMITED ----------
-'''
-
 # all logic function
 def run_module():
     # SOP:1 Change this: 
@@ -248,7 +188,6 @@ if __name__ == '__main__':
 Dont worry about that long script, We'll break down the module into its three primary functional components: **Input**, **Process**, and **Output**.
 
 #### **Input: Handling Module Arguments**
-
 The **input** function is responsible for receiving and validating arguments passed to the module. It defines the parameters that the module will use to interact with the network device.
 
 **Code Snippet: Input Handling**
@@ -285,7 +224,6 @@ def run_module():
 In this section, we define the module's expected parameters using the `module_args` dictionary. This includes the command to execute, device details, and authentication credentials. We also initialize the result dictionary to hold the output of the command.
 
 #### **Process: Interacting with the Device**
-
 The **process** function handles the actual interaction with the network device. It uses the parameters provided in the input to connect to the device, execute commands, and parse the results.
 
 **Code Snippet: Processing and Parsing**
@@ -326,7 +264,6 @@ def parse_output(platform=None, command=None, data=None):
 Here, the `call_huawei` function connects to the Huawei device using Netmiko and executes the specified command. The `parse_output` function handles the parsing of the command output using TextFSM. This function ensures that the raw data is converted into a structured format suitable for further processing.
 
 #### Output: Delivering Results**
-
 The **output** function formats the results and sends them back to the Ansible playbook. It ensures that the output is presented in a way that is easy for users to understand and utilize.
 
 **Code Snippet: Output Handling**
@@ -353,68 +290,27 @@ if __name__ == '__main__':
 
 In the output handling section, we call the `call_huawei` and `parse_output` functions to retrieve and format the data. We then update the result dictionary and use `module.exit_json()` to return the structured data to the Ansible playbook.
 ## **Step 2: Placement and Usage**
+**In Development** 
+We can create modules on `/usr/share/ansible/plugins/modules` and call from playbook using `yourorganization_module_huawei_display_ip_routing_table:`
 
-1. **Development Phase:**
-   - Place the script in the development directory: `/usr/share/ansible/plugins/modules`
-   - During development, you can call this module directly from your playbooks using:
-     ```yaml
-     - name: TEST RUN MODULE
-       hosts: metrodevice
-       connection: local
-       gather_facts: no
+**In Production**
+And then after finised create our own collection in
 
-       tasks:
-         - name: RUN CALL HUAWEI MODULE
-           yourorganization_module_huawei_display_ip_routing_table:
-             command: 'display ip routing-table'
-             ansible_host: '{{ hostvars[inventory_hostname].ansible_host }}'
-             ansible_network_os: '{{ hostvars[inventory_hostname].ansible_network_os }}'
-             ansible_user: '{{ hostvars[inventory_hostname].ansible_user }}'
-             ansible_ssh_pass: '{{ hostvars[inventory_hostname].ansible_ssh_pass }}'
-             ansible_platform: '{{ hostvars[inventory_hostname].ansible_platform }}'
-           register: output
+```
+/usr/share/ansible/collections/ansible_collections/yourorganization/vrp/plugins/modules
+```
+- `yourorganization` for workspace name
+- `vrp` for OS for system name
+- and put modules on plugin/modules
 
-         - name: PRINT OUTPUT SUCCESS MODULE
-           debug:
-             msg: '{{ output }}'
-     ```
+and call on playbook and put module using this format `yourorganization.vrp.display_ip_routing_table:`
 
-2. **Production Phase:**
-   - Move and rename the module to its final location:
-     ```bash
-     mv yourorganization_module_huawei_display_ip_routing_table.py /usr/share/ansible/collections/ansible_collections/yourorganization/vrp/plugins/modules/display_ip_routing_table.py
-     ```
+Example:
+```
+mv multipolar_module_huawei_display_ip_routing_table.py /usr/share/ansible/collections/ansible_collections/yourorganization/vrp/plugins/modules/display_ip_routing_table.py
 
-   - Update your playbook to use the new module format:
-     ```yaml
-     - name: TEST USING COLLECTION
-       hosts: metrodevice
-       connection: local
-       gather_facts: no
-
-       tasks:
-         - name: RUN CALL HUAWEI MODULE FROM COLLECTION
-           yourorganization.vrp.display_ip_routing_table:
-             command: 'display ip routing-table'
-             ansible_host: '{{ hostvars[inventory_hostname].ansible_host }}'
-             ansible_network_os: '{{ hostvars[inventory_hostname].ansible_network_os }}'
-             ansible_user: '{{ hostvars[inventory_hostname].ansible_user }}'
-             ansible_ssh_pass: '{{ hostvars[inventory_hostname].ansible_ssh_pass }}'
-             ansible_platform: '{{ hostvars[inventory
-
-_hostname].ansible_platform }}'
-           register: output
-
-         - name: PRINT OUTPUT SUCCESS MODULE
-           debug:
-             msg: '{{ output }}'
-     ```
-
-   - Execute the playbook with your new module:
-     ```bash
-     ansible-playbook -i inventory_host_huawei.yml playbook_for_module_huawei_display_ip_routing_table_using_collection.yml
-     ```
-
+ansible-playbook -i inventory_host_huawei.yml playbook_for_module_huawei_display_ip_routing_table_using_collection.yml 
+```
 ### **Conclusion**
 
 Creating and managing custom Ansible modules allows you to tailor automation to your specific network needs. By following these steps, you can efficiently manage Huawei VRP devices and integrate their functionalities into your Ansible automation workflows. This guide should provide a solid foundation for developing and deploying your custom network modules.
