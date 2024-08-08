@@ -15,8 +15,7 @@ In the realm of multicast networking, two essential protocols play distinct but 
 - **Multicast Routing:** PIM creates and maintains multicast distribution trees that span multiple networks, facilitating the delivery of multicast traffic to devices across different network segments.
 - **Protocol Independence:** PIM operates independently of the underlying unicast routing protocol (e.g., OSPF, EIGRP, BGP), allowing it to work with various network setups.
 #### How IGMP and PIM Work Together
-![Pasted image 20240808081939.png](/img/user/Attachments/Pasted%20image%2020240808081939.png)
-Image Source: [Wired Intelligent Edge (Campus Switching and Routing) - Airheads Community (arubanetworks.com)](https://community.arubanetworks.com/community-home/librarydocuments/viewdocument?DocumentKey=e1368079-88ec-4071-b93f-1599c9372110&CommunityKey=2fd943a6-8898-4dbe-915f-4f09e4d3c317&tab=librarydocuments)
+![Pasted image 20240808175152.png](/img/user/Attachments/Pasted%20image%2020240808175152.png)
 The interaction between IGMP and PIM is crucial for effective multicast communication. Within a local network, IGMP ensures that multicast traffic is only sent to interested devices. When multicast traffic needs to be sent to or from devices across different networks, PIM takes over, routing the traffic between networks and ensuring that it reaches its intended destination.
 In summary:
 - **IGMP** is essential for managing multicast group memberships locally, ensuring efficient multicast traffic distribution within a single network segment.
