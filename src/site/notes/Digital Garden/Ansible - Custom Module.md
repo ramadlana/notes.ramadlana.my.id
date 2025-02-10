@@ -2,6 +2,7 @@
 {"dg-publish":true,"permalink":"/digital-garden/ansible-custom-module/","noteIcon":""}
 ---
 
+#automation #ansible
 Ansible modules enable automation of various network management tasks, and creating a custom module can greatly enhance your automation capabilities. This blog post will walk you through the process of creating a custom Ansible module to interact with Huawei VRP (Versatile Routing Platform) devices. Specifically, we will create a module to execute the `display ip routing-table` command and handle the output.
 
 ## **Step 1: Creating the Custom Ansible Module**

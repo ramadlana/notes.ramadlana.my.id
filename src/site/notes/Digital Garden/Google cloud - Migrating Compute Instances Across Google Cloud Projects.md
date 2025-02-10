@@ -2,6 +2,7 @@
 {"dg-publish":true,"permalink":"/digital-garden/google-cloud-migrating-compute-instances-across-google-cloud-projects/","noteIcon":""}
 ---
 
+#cloud 
 Migrating virtual machines (VMs) across Google Cloud projects can streamline your infrastructure management and improve resource allocation. In this guide, we'll walk you through the process of creating, snapshotting, and migrating VMs using Google Cloud's command-line tool, `gcloud`. This will help you move VMs between projects and ensure a smooth transition.
 
 ### **1. Creating a New VM Instance**

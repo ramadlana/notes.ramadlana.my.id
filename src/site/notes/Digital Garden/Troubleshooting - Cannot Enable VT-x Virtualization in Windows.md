@@ -2,6 +2,7 @@
 {"dg-publish":true,"permalink":"/digital-garden/troubleshooting-cannot-enable-vt-x-virtualization-in-windows/","noteIcon":""}
 ---
 
+#virtualization
 Enabling VT-x (Intel Virtualization Technology) is essential for running virtual machines efficiently, especially when using tools like GNS3, VirtualBox, or VMware. If you encounter issues enabling VT-x virtualization on your Windows system, follow this troubleshooting guide to resolve the problem.
 
 ### **1. Verify Virtualization Settings in BIOS/UEFI**

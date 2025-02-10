@@ -2,6 +2,7 @@
 {"dg-publish":true,"permalink":"/digital-garden/network-multicast-understanding-multicast-protocols-and-implementations/","noteIcon":""}
 ---
 
+#network #multicast
 ### Understanding IGMP and PIM in Multicast Networking
 In the realm of multicast networking, two essential protocols play distinct but complementary roles: IGMP (Internet Group Management Protocol) and PIM (Protocol Independent Multicast). Understanding how these protocols work together is crucial for managing multicast traffic effectively across networks.
 #### The Role of IGMP

@@ -2,6 +2,7 @@
 {"dg-publish":true,"permalink":"/digital-garden/network-enterprise-network-design-guide/","noteIcon":""}
 ---
 
+#network #netwrk-design
 When designing an enterprise network, selecting the right architecture is crucial for ensuring scalability, performance, and reliability. Two popular network designs are the Two-Tier (or Collapsed Core) and Three-Tier architectures. Each has its strengths and use cases, making them suitable for different scenarios. This guide will explore both designs, detailing their components, benefits, and ideal use cases.
 
 ### **Two-Tier / Collapsed Core Design**
